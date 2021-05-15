@@ -23,16 +23,14 @@ const Login = (): JSX.Element => {
   const history = useHistory();
 
   const handleGetToken = (values: ValuesI) => {
-    const { username, password } = values;
-
     api
       .post(
         '/oauth/token',
         queryString.stringify({
           grant_type: 'password',
           scope: 'web',
-          username,
-          password,
+          username: 'teste@teste.com',
+          password: 'frontendpassword',
         }),
         {
           auth: {
@@ -43,6 +41,7 @@ const Login = (): JSX.Element => {
       )
       .then(({ data }) => {
         setAuthentication(data.access_token);
+
         history.push(SUPPLIER_LISTING_PATH, {
           jwt: data.access_token,
         });

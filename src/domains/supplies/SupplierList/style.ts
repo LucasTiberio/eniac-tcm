@@ -18,6 +18,12 @@ export const Container = styled.div`
       border-bottom: 1px solid ${({ theme }): string => theme.fontColor};
     }
 
+    thead tr td {
+      &:last-child {
+        cursor: pointer;
+      }
+    }
+
     tbody {
       tr {
         td {

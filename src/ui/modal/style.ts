@@ -11,7 +11,7 @@ export const FloatingModal = styled.div`
 
   background: rgba(0, 0, 0, 0.3);
 
-  height: 100vh;
+  min-height: 100vh;
   width: 100vw;
 `;
 
