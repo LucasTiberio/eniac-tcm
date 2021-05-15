@@ -14,7 +14,7 @@ const mockedSupplierData = {
   city: 'São Paulo',
   state: 'SP',
   ownerEmail: 'mk@email.com',
-  // ownerPhoneNumber: '5511912365412',
+  ownerPhoneNumber: '5511912365412',
   name: 'Nome distribuidora mockado',
   ownerName: 'Nome distribuidor mockado',
   phoneNumber: '1140028922',
