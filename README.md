@@ -4,11 +4,13 @@ made with ❤️ by [Lucas](https://www.linkedin.com/in/lucas-tiberio/)
 
 ## Definitions of usage
 
+- I opeted to use Yarn instead Npm, due to its multi-core processing and its cache system (not to download the same lib that was already installed)
+- The PWA (site), will be used mainly on desktops, for this reason the mobile-first was not used as a practice.
 - Firstly, I used craco for init my project. It allows me to use features like Path Mapping in typescript (ex.: @poupachef/components/_ instead ../../../poupachef/components/_).
-- I opted for the Context API instead of Redux, to avoid manipulation of great information and logic. Using only to save the state in more nested objects.
+- I opted for the Context API instead of Redux, to avoid manipulation of large informations and logic. Using only to save the state in more nested objects.
 - I used a UX technique called Fast-Feedback, to avoid repeating unnecessary requests or renders. Updating the values directly ​​in the state, right after the request is answer.
 - To stylize the components, I chose to use styled-components, to keep the code cleaner and readable. In addition to the possibility of theme control across the state.
-- For architecture, I decided to choose DDD, thus having the possibility to model the most important / central classes of the project, in a way that reduces the complexity and maintenance of these.
+- For architecture, I decided to choose DDD, thus having the possibility to model the most important/central classes of the project, in a way that reduces the complexity and maintenance of these.
 - Lighthouse feedback is in the file: localhost_2021-02-22_14-16-53.report.html.
 
 # Architecture folders definition
