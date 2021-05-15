@@ -49,16 +49,19 @@ const CreateSupplierModal = ({
         newSupplierList.push(data);
         setSupplierList(newSupplierList);
 
-        handleCloseCreateSupplierModal();
+        setCreateSupplierModal({
+          modalOpened: false,
+          formValues: {},
+        });
       })
       .catch(() => toast.error('Ocorreu um erro ao criar um distribuidor.'));
   };
 
   const initialValues = {
-    name: '',
-    cnpj: '',
-    ownerName: '',
-    phoneNumber: '',
+    name: createSupplierModal.formValues.name || '',
+    cnpj: createSupplierModal.formValues.cnpj || '',
+    ownerName: createSupplierModal.formValues.ownerName || '',
+    phoneNumber: createSupplierModal.formValues.phoneNumber || '',
   };
 
   const formik = useFormik({
