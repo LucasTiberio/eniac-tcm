@@ -27,11 +27,9 @@ const Login = (): JSX.Element => {
       .post(
         '/oauth/token',
         {
-          ...values,
           grant_type: 'password',
           scope: 'web',
-          username: 'teste@teste.com',
-          password: 'frontendpassword',
+          ...values,
         },
         {
           auth: {
