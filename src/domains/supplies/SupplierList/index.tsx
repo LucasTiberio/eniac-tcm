@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { Create, Add } from '@material-ui/icons';
 
 import api from '@poupachef/api';
@@ -10,7 +10,7 @@ import { Container } from './style';
 import CreateSupplierModal from '../CreateSupplierModal';
 
 export interface SupplieListItemI {
-  publicId: string;
+  _id: string;
   name: string;
   cnpj: string;
   phoneNumber: string;
@@ -19,9 +19,6 @@ export interface SupplieListItemI {
 
 const SupplierList = (): JSX.Element => {
   const history = useHistory();
-  const location = useLocation();
-
-  const { jwt }: any = location.state || '';
 
   const [createSupplierModal, setCreateSupplierModal] = useState<ICreateSupplierModal>({
     modalOpened: false,
@@ -30,15 +27,7 @@ const SupplierList = (): JSX.Element => {
   const [supplierList, setSupplierList] = useState<SupplieListItemI[]>([]);
 
   useEffect(() => {
-    const initialHeader = jwt
-      ? {
-          headers: {
-            Authorization: `Bearer ${jwt}`,
-          },
-        }
-      : {};
-
-    api.get('/suppliers', initialHeader).then(({ data }) => {
+    api.get('/suppliers').then(({ data }) => {
       setSupplierList(data);
     });
   }, []);
@@ -52,8 +41,6 @@ const SupplierList = (): JSX.Element => {
       modalOpened: true,
     });
   };
-
-  if (!supplierList.length) return <SpinnerComponent />;
 
   return (
     <>
@@ -81,22 +68,26 @@ const SupplierList = (): JSX.Element => {
             </tr>
           </thead>
 
-          <tbody>
-            {supplierList.map((supplie, i) => {
-              const onClick = (): void => handleGoToDetails(supplie.publicId);
-              return (
-                <tr key={i}>
-                  <td>{supplie.name}</td>
-                  <td>{supplie.ownerName}</td>
-                  <td>{supplie.cnpj}</td>
-                  <td>{supplie.phoneNumber}</td>
-                  <td onClick={onClick} onKeyDown={onClick} role="button">
-                    <Create />
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
+          {supplierList.length ? (
+            <tbody>
+              {supplierList.map((supplie, i) => {
+                const onClick = (): void => handleGoToDetails(supplie._id);
+                return (
+                  <tr key={i}>
+                    <td>{supplie.name}</td>
+                    <td>{supplie.ownerName}</td>
+                    <td>{supplie.cnpj}</td>
+                    <td>{supplie.phoneNumber}</td>
+                    <td onClick={onClick} onKeyDown={onClick} role="button">
+                      <Create />
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          ) : (
+            <SpinnerComponent />
+          )}
         </table>
       </Container>
     </>

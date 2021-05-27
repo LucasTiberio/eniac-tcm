@@ -32,7 +32,7 @@ const SupplierDetails = (): JSX.Element => {
     ownerName: '',
     ownerPhoneNumber: '',
     phoneNumber: '',
-    publicId: '',
+    _id: '',
     state: '',
     updatedAt: '',
     zipCode: '',
@@ -41,7 +41,7 @@ const SupplierDetails = (): JSX.Element => {
   const informationValues = useMemo(() => {
     return {
       supplierInformations: [
-        { key: 'publicId', label: 'ID', value: supplier?.publicId },
+        { key: '_id', label: 'ID', value: supplier?._id },
         { key: 'phoneNumber', label: 'Número', value: supplier?.phoneNumber },
         { key: 'name', label: 'Nome', value: supplier?.name },
         { key: 'cnpj', label: 'CNPJ', value: supplier?.cnpj },
@@ -58,16 +58,20 @@ const SupplierDetails = (): JSX.Element => {
       supplierOwnerDetails: [
         { key: 'ownerName', label: 'Nome', value: supplier?.ownerName },
         { key: 'ownerEmail', label: 'Email', value: supplier?.ownerEmail },
-        { key: 'ownerPhoneNumber', label: 'Celular', value: supplier?.ownerPhoneNumber },
+        {
+          key: 'ownerPhoneNumber',
+          label: 'Celular',
+          value: supplier.ownerPhoneNumber || 'aasddasdsda',
+        },
       ],
     };
   }, [supplier]);
 
   const params: {
-    supplierPublicId: string;
+    supplierId: string;
   } = useParams();
 
-  const supplierId = params.supplierPublicId;
+  const { supplierId } = params;
 
   useEffect(() => {
     api
@@ -96,7 +100,7 @@ const SupplierDetails = (): JSX.Element => {
 
   const handleDeleteSupplier = () => {
     api
-      .delete(`/suppliers/${supplier.publicId}`)
+      .delete(`/suppliers/${supplier._id}`)
       .then(() => {
         toast.success('Fornecedor deletado com sucesso!');
         handleBackToSupplierList();

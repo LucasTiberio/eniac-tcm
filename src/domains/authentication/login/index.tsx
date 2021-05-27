@@ -26,12 +26,13 @@ const Login = (): JSX.Element => {
     api
       .post(
         '/oauth/token',
-        queryString.stringify({
+        {
+          ...values,
           grant_type: 'password',
           scope: 'web',
           username: 'teste@teste.com',
           password: 'frontendpassword',
-        }),
+        },
         {
           auth: {
             username: 'poupachef-test',

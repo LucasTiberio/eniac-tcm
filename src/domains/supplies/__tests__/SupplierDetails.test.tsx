@@ -21,7 +21,7 @@ const mockedSupplierData = {
   ownerName: 'Mockado',
   ownerPhoneNumber: '5511987460946',
   phoneNumber: '5511987460946',
-  publicId: 'mocked-public-id',
+  _id: 'mocked-public-id',
   state: 'SP',
   updatedAt: '0000',
   zipCode: '05565000',
@@ -30,7 +30,7 @@ const mockedSupplierData = {
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
   useParams: () => ({
-    supplierPublicId: mockedSupplierData.publicId,
+    supplierId: mockedSupplierData._id,
   }),
 }));
 
@@ -60,7 +60,7 @@ describe('SuppliersDetails', () => {
     mount(<SupplierDetails />);
 
     expect(mockedAxios.get).toHaveBeenCalledTimes(1);
-    expect(mockedAxios.get).toHaveBeenCalledWith(`/suppliers/${mockedSupplierData.publicId}`);
+    expect(mockedAxios.get).toHaveBeenCalledWith(`/suppliers/${mockedSupplierData._id}`);
   });
 
   it('Should show information boxes', done => {
@@ -101,7 +101,7 @@ describe('SuppliersDetails', () => {
 
     const informationValues = {
       supplierInformations: [
-        { key: 'publicId', label: 'ID', value: mockedSupplierData.publicId },
+        { key: '_id', label: 'ID', value: mockedSupplierData._id },
         { key: 'phoneNumber', label: 'Número', value: mockedSupplierData.phoneNumber },
         { key: 'name', label: 'Nome', value: mockedSupplierData.name },
         { key: 'cnpj', label: 'CNPJ', value: mockedSupplierData.cnpj },

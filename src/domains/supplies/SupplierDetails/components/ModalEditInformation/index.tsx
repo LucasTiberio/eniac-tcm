@@ -79,7 +79,7 @@ const ModalEditOpen = ({
             fullWidth
             onChange={formik.handleChange}
             value={formik.values[information.key as keyof typeof formik.values]}
-            disabled={information.key === 'publicId'}
+            disabled={information.key === '_id'}
           />
         </Box>
       ))}

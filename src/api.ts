@@ -11,11 +11,12 @@ const api = () => {
 
   return axios.create({
     timeout: 30000,
-    baseURL: 'https://psad9m6vrj.execute-api.sa-east-1.amazonaws.com/test',
+    baseURL: 'http://localhost:3002/api',
     headers: {
       common: {
         Authorization: getBearerToken(),
         'Cache-Control': 'no-cache, no-store, must-revalidate',
+        'access-control-allow-origin': '*',
         Pragma: 'no-cache',
         'Content-Type': 'application/json',
         Accept: 'application/json',

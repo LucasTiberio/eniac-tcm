@@ -2,7 +2,7 @@
 
 declare module 'react-svg-spinner';
 declare interface SupplierI {
-  publicId: string;
+  _id: string;
   name: string;
   cnpj: string;
   phoneNumber: string;

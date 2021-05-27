@@ -5,7 +5,7 @@ import { RouteAndRedirect } from '../../routing/types';
 export const SUPPLIER_LISTING_PATH = '/suppliers';
 const SUPPLIER_LISTING_COMPONENT = lazy(() => import('@poupachef/io/supplies/SupplierList'));
 
-export const SUPPLIER_UNIQUE_PATH = '/suppliers/:supplierPublicId';
+export const SUPPLIER_UNIQUE_PATH = '/suppliers/:supplierId';
 const SUPPLIER_UNIQUE_COMPONENT = lazy(() => import('@poupachef/io/supplies/SupplierDetails'));
 
 const routes: RouteAndRedirect[] = [

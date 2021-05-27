@@ -44,6 +44,7 @@
         "react/require-default-props": "off",
         "no-use-before-define": [2, {"functions": true, "classes": true}],
         "@typescript-eslint/no-use-before-define": ["error"],
-        "jsx-a11y/no-noninteractive-element-to-interactive-role": "off"
+        "jsx-a11y/no-noninteractive-element-to-interactive-role": "off",
+        "no-underscore-dangle": "off"
     }
 }
