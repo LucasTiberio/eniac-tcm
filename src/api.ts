@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { isAuthenticated, getTokenAuthentication } from '@poupachef/support/helpers/authentication';
+import { API_ENDPOINT } from './support/commons/envs';
 
 const api = () => {
   const getBearerToken = () => {
@@ -11,7 +12,7 @@ const api = () => {
 
   return axios.create({
     timeout: 30000,
-    baseURL: 'http://localhost:3002/api',
+    baseURL: `${API_ENDPOINT}/api`,
     headers: {
       common: {
         Authorization: getBearerToken(),
