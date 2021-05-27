@@ -47,10 +47,10 @@ const Login = (): JSX.Element => {
       })
       .catch(
         ({ response }): React.ReactText => {
-          if (response.data.error_description === 'Bad credentials')
+          if (response.data.message === 'Wrong credentials')
             return toast.error('Combinação de usuário e senha inválidos.');
 
-          return toast.error(response.data.error_description);
+          return toast.error(response.data.message);
         },
       );
   };

@@ -105,7 +105,7 @@ const SupplierDetails = (): JSX.Element => {
         toast.success('Fornecedor deletado com sucesso!');
         handleBackToSupplierList();
       })
-      .catch(({ response }) => toast.error(response.data.error_description));
+      .catch(({ response }) => toast.error(response.data.message));
   };
 
   return (
